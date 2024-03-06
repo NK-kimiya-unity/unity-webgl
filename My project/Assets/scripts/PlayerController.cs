@@ -15,10 +15,21 @@ public class PlayerController : MonoBehaviour
 
     public Joystick joystick; // ジョイスティックスクリプトへの参照
     private bool isJoystickActive = false; // ジョイスティックがアクティブかどうかを追跡するフラグ
+
+    SpawnManager spawnManager;//スポーンマネージャー管理
+
+      private void Awake()
+    {
+        //タグからSpawnManagerを探す
+        spawnManager = GameObject.FindGameObjectWithTag("SpawnManager").GetComponent<SpawnManager>();
+    }
     private void Start()
     {
         //変数にメインカメラを格納
         cam = Camera.main;
+
+        //ランダムな位置でスポーンさせる
+        transform.position = spawnManager.GetSpawnPoint().position;
     }
 
     private void Update()

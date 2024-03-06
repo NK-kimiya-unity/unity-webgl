@@ -347,6 +347,7 @@
 "Assets/Brick Project Studio/_BPS Basic Assets/Common/Scripts and Animations/Windows/opencloseWindow1.cs"
 "Assets/scripts/Joystick.cs"
 "Assets/scripts/PlayerController.cs"
+"Assets/scripts/SpawnManager.cs"
 -langversion:9.0
 
 /deterministic
