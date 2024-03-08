@@ -26,6 +26,10 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     string apiUrl = "http://127.0.0.1:8080/api/get-avatar-number/";
     string user_number = "";
     public InputField inputField;
+    public GameObject PostPanel;
+    public GameObject roomPanel;//ルームパネル
+    public Text roomName;//ルーム名テキスト
+    
 
     private void Awake()
     {
@@ -62,6 +66,11 @@ public class PhotonManager : MonoBehaviourPunCallbacks
         buttons.SetActive(false);//ボタン非表示
 
         createRoomPanel.SetActive(false);//ルーム作成パネル
+
+        roomPanel.SetActive(false);//ルームパネル
+
+        PostPanel.SetActive(false);
+
     }
 
 
@@ -74,9 +83,11 @@ public class PhotonManager : MonoBehaviourPunCallbacks
     public override void OnConnectedToMaster()//
     {
 
-        PhotonNetwork.JoinLobby();//マスターサーバー上で、デフォルトロビーに入ります
+        //PhotonNetwork.JoinLobby();//マスターサーバー上で、デフォルトロビーに入ります
 
-        loadingText.text = "ロビーへの参加...";//テキスト更新
+        loadingText.text = "オンライン接続中";//テキスト更新
+        CloseMenuUI();
+        PostPanel.SetActive(true);
 
     }
 
@@ -119,7 +130,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
 
 
             CloseMenuUI();//メニュー閉じる
-            loadingText.text = "ルーム作成中...";
+            loadingText.text = "IDログイン中...";
             loadingPanel.SetActive(true);
     }
 
@@ -143,6 +154,7 @@ public class PhotonManager : MonoBehaviourPunCallbacks
             else
             {
                 Debug.Log("Form upload complete! Response: " + www.downloadHandler.text);
+                PhotonNetwork.JoinLobby();
             }
         }
     }
@@ -237,6 +249,15 @@ public class PhotonManager : MonoBehaviourPunCallbacks
      public void ApiPostButton()
     {
         StartCoroutine(PostAvatarNumber());
+    }
+
+    //ルームに参加したら呼ばれる関数
+    public override void OnJoinedRoom()
+    {
+        CloseMenuUI();//一旦すべてを閉じる
+        roomPanel.SetActive(true);//ルームパネル表示
+
+        roomName.text = PhotonNetwork.CurrentRoom.Name;//現在いるルームを取得し、テキストにルーム名を反映
     }
 
 }
