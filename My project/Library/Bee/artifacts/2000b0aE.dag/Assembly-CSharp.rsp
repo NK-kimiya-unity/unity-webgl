@@ -378,6 +378,7 @@
 "Assets/scripts/Joystick.cs"
 "Assets/scripts/PhotonManager.cs"
 "Assets/scripts/PlayerController.cs"
+"Assets/scripts/Room.cs"
 "Assets/scripts/SpawnManager.cs"
 -langversion:9.0
 
