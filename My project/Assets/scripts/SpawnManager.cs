@@ -1,24 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class SpawnManager : MonoBehaviour
-{
-     //スポーンポイントオブジェクト格納配列
-    public Transform[] spawnPositons;
-
-    private void Start()
-    {
-        //スポーンポイントオブジェクトをすべて非表示
-        foreach (var pos in spawnPositons)
-        {
-            pos.gameObject.SetActive(false);
-        }
-    }
-
-     public Transform GetSpawnPoint()
-    {
-        //ランダムでスポーンポイント１つ選んで位置情報を返す
-        return spawnPositons[Random.Range(0, spawnPositons.Length)];
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:8d7ae3da31dcc3ac373a2832317dd8adf5522b0678b1934e3ac77d06a1ce6e7f
+size 936

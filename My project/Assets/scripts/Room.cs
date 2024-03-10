@@ -1,14 +1,3 @@
-using UnityEngine;
-using UnityEngine.UI;
-using Photon.Realtime;
-
-public class Room : MonoBehaviour
-{
-    public Text buttonText;
-    private RoomInfo info;
-    public void RegisterRoomDetails(RoomInfo info)
-    {
-        this.info = info;
-        buttonText.text = this.info.Name;
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:05e324ff91eac2ea38756d90e5006010562c1158694492232ded7f395142f8c2
+size 395
